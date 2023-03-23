@@ -8,9 +8,9 @@ export default function App() {
   const [identificacion,setidentificacion] = useState('');
   const [nombre,setnombre] = useState('');
   const [asignatura,setasignatura] = useState('');
-  const [notaMoment1,setnotaMoment1] = useState('');
-  const [notaMoment2,setnotaMoment2] = useState('');
-  const [notaMoment3,setnotaMoment3] = useState('');
+  const [nota1,setnota1] = useState('');
+  const [nota2,setnota2] = useState('');
+  const [nota3,setnota3] = useState('');
   const [definitiva,setdefinitiva] = useState('');
   const [observacion,setobservacion] = useState('');
   const [esValido,setesValido] = useState(false);
@@ -22,21 +22,21 @@ export default function App() {
     if (isNaN(identificacion)!=false) {
       setesValido(false)
       setmensaje("El campo identificacion debe ser númerico...")
-    } else if (isNaN(notaMoment1)!=false || isNaN(notaMoment2)!=false || isNaN(notaMoment3)!=false ) {
+    } else if (isNaN(nota1)!=false || isNaN(nota2)!=false || isNaN(nota3)!=false ) {
       setesValido(false)
       setmensaje("Los campos que hacen referencia a las notas deben ser númericos...")
-    } else if (notaMoment1<0 || notaMoment2 <0 || notaMoment3<0 ) {
+    } else if (nota1<0 || nota2 <0 || nota3<0 ) {
       setesValido(false)
       setmensaje("Los campos que hacen referencia a las notas deben ser positivos...")
-    } else if (notaMoment1>5 || notaMoment2 >5 || notaMoment3 >5 ) {
+    } else if (nota1>5 || nota2 >5 || nota3 >5 ) {
       setesValido(false)
       setmensaje("Recuerde que las notas deben estar entre 0 y 5...")
-    } else if (identificacion =="" || nombre =="" || asignatura =="" || notaMoment1=="" || notaMoment2=="" || notaMoment3=="" ) {
+    } else if (identificacion =="" || nombre =="" || asignatura =="" || nota1=="" || nota2=="" || nota3=="" ) {
       setesValido(false)
       setmensaje("Por favor diligenciar todos los campos...")
     } else{
       let calculoNota = 0;
-      calculoNota = ((parseFloat(notaMoment1) +parseFloat(notaMoment2)+parseFloat(notaMoment3))/3).toFixed(2)
+      calculoNota = ((parseFloat(nota1) +parseFloat(nota2)+parseFloat(nota3))/3).toFixed(2)
       let explicacionNota
       if (calculoNota >= 3) {
         explicacionNota = "Aprueba"
@@ -60,9 +60,9 @@ export default function App() {
     setidentificacion('')
     setnombre('')
     setasignatura('')
-    setnotaMoment1('')
-    setnotaMoment2('')
-    setnotaMoment3('')
+    setnota1('')
+    setnota2('')
+    setnota3('')
     setdefinitiva('')
     setobservacion('')
     setmensaje('')
@@ -80,9 +80,9 @@ export default function App() {
           id: identificacion,
           nombre: nombre,
           asignatura: asignatura,
-          nota1: notaMoment1,
-          nota2: notaMoment2,
-          nota3: notaMoment3,
+          nota1: nota1,
+          nota2: nota2,
+          nota3: nota3,
           definitiva: definitiva,
           observacion: observacion
         })
@@ -91,7 +91,7 @@ export default function App() {
         console.log(alumnos);
       } else {
         setesValido(false)
-        setmensaje('Esta información ya esta registrada')
+        setmensaje('Esta identificacion ya esta registrada')
       }
     }
   }
@@ -111,9 +111,9 @@ export default function App() {
         setmensaje('Alumno encontrado')
         setnombre(findId.nombre)
         setasignatura(findId.asignatura)
-        setnotaMoment1(findId.nota1)
-        setnotaMoment2(findId.nota2)
-        setnotaMoment3(findId.nota3)
+        setnota1(findId.nota1)
+        setnota2(findId.nota2)
+        setnota3(findId.nota3)
         setdefinitiva(findId.definitiva)
         setobservacion(findId.observacion)
         console.log(findId);
@@ -154,24 +154,24 @@ export default function App() {
         <View style={styles.inputsContainer}>
           <Text style={styles.label}>Nota momento 1 (30%): </Text>
           <TextInput style={styles.textInput}
-          onChangeText={notaMoment1 => setnotaMoment1(notaMoment1)}
-          value={notaMoment1}
+          onChangeText={nota1 => setnota1(nota1)}
+          value={nota1}
           />
         </View>
 
         <View style={styles.inputsContainer}>
           <Text style={styles.label}>Nota momento 2 (35%): </Text>
           <TextInput style={styles.textInput}
-          onChangeText={notaMoment2 => setnotaMoment2(notaMoment2)}
-          value={notaMoment2}
+          onChangeText={nota2 => setnota2(nota2)}
+          value={nota2}
           />
         </View>
 
         <View style={styles.inputsContainer}>
           <Text style={styles.label}>Nota momento 3 (35%): </Text>
           <TextInput style={styles.textInput}
-          onChangeText={notaMoment3 => setnotaMoment3(notaMoment3)}
-          value={notaMoment3}
+          onChangeText={nota3 => setnota3(nota3)}
+          value={nota3}
           />
         </View>
 
